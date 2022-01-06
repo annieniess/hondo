@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A coding project by Annie Li</title>
+    <title>Hundo: A coding project by Annie Li</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,14 +16,17 @@
     <link rel="icon" type="image/jpg" href="/img/IMG_8678 2.jpg"> 
     
    <!-- Convert this to an external style sheet -->
-
+    <!-- Google fonts for racing sans one-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
     <!--Nav bar section-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top ">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/IMG_8678 2.jpg" class="d-inline-block align-text-top" width="30" height="24" > APP NAME</a>
+        <a class="navbar-brand logoFont" href="#"><img src="img/IMG_8678 2.jpg" class="d-inline-block align-text-top" width="30" height="24" > HUNDO</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -59,17 +62,71 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //call hello world
-                            function HelloWorld(){
-                                alert("hello world");
-                            }
+                            //get the values from the page
+//starts or controller function
+function getValues(){
+    //get values from the page
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById('endValue').value;
+
+    //parse into integers 
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+
+    //
+    if (Number.isInteger(startValue)&& Number.isInteger(endValue)){
+            //call generateNumebrs
+            let numbers= generateNumbers(startValue, endValue);
+            //call displayNumbers
+            displayNumbers(numbers);
+    }else{
+        alert('You must enter integers')
+    }
+
+   
+
+}
+
+//generate numbers from start value to end value
+//logic function/s
+function generateNumbers(sValue, eValue){
+    let numbers=[];
+    // all numbers from start to end]
+    //index= index+1 (eaqual index++/index--)
+    for(let index = sValue; index <= eValue; index++){
+        // this execute in a loop until index=eValue
+        numbers.push(index);
+    }
+    return numbers;
+}
+
+
+//display numbers and mark even bold
+//display or view functions
+function displayNumbers(numbers){
+    let templateRows="";
+    for (let index = 0; index < numbers.length; index++) {
+        let className="even";
+        let number = numbers[index];
+        if(number %2 == 0){
+            className="even";
+        }
+        else{
+            className="odd";
+        }
+
+        templateRows += `&lt;tr>&lt;td class="${className}" >${number}&lt;/td>&lt;/tr>;
+        
+    }
+    document.getElementById("results").innerHTML=templateRows;
+}
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
                     <p>The code is structured in one function</p>
-                    <h5>Hello World</h5>
-                    <p> Hellow world is a function that display an alert with a message of "Hello world"</p>
+                    <h5></h5>
+                    <p> display the javascript part code for the project</p>
                 </div>
             </div>
         </div>

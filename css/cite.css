@@ -15,6 +15,17 @@ main>.container {
     --dark-color: #292929;
     --white-color: #f2f8f4;
 }
+.odd{
+    font-weight: 100;
+}
+
+.even{
+    font-weight: bold;
+    font-size: large;
+}
+.logoFont{
+    font-family: 'Racing Sans One', cursive;
+}
 
 body{
     color:var(--dark-color);
